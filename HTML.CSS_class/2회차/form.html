@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문조사 양식</title>
+</head>
+<body>
+    <header>
+        <h1>설문조사 양식</h1>
+        <p>모든항목에 빠짐없이 체크해주십시오.</p>
+    </header>
+    <hr>
+    <main>
+        <form>
+            <div id="개인정보">
+            <fieldset>
+                <legend>개인정보</legend>
+                <label for="name">이름</label>
+                <input type="text" id="name" placeholder="본명을 입력하세요" name="name">
+                <br>
+                <label for="email">이메일</label>
+                <input type="text" id="email" placeholder="메일 주소를 입력하세요" name="email">
+            </fieldset>
+            </div>
+            <div id="설문">
+            <fieldset>
+                <legend>설문</legend>
+                <p>연력대가 어떻게 되십니까?</p>
+                <input type="radio" id="teen" name="age">
+                <label for="teen">10대</label>
+                <input type="radio" id="twenty" name="age">
+                <label for="twenty">20대</label>
+                <input type="radio" id="thirty" name="age">
+                <label for="t">30대</label>
+                <input type="radio" id="fourty" name="age">
+                <label for="fourty">40대</label>
+                <input type="radio" id="fifty" name="age">
+                <label for="fifty">50대</label>
+                
+                <br>
+
+                <p>학원을 선택 시 그 기준은 어떻게 되시나요?</p>
+                <input type="checkbox" id="possition" name="acedemy">
+                <label for="possition">위치</label>
+                <input type="checkbox" id="possition" name="acedemy">
+                <label for="possition">학원비</label>
+                <input type="checkbox" id="possition" name="acedemy">
+                <label for="possition">강사</label>
+                <input type="checkbox" id="possition" name="acedemy">
+                <label for="possition">시설</label>
+
+
+            </fieldset>
+            </div>
+            <div id="기타의견">
+            <fieldset>
+                <legend>기타의견</legend>
+                <textarea rows="3" cols="30"></textarea>
+            </fieldset>
+            </div>
+            <input type="submit">
+        </form>
+    </main>
+    <hr>
+    <footer>
+        <p>입력하느라 수고하셨습니다.</p>
+    </footer>
+</body>
+</html>
