@@ -1,7 +1,12 @@
 html{
     background-color: #000000;
     color: #999999;
+}
 
 *{
-    font-family: 'Black Han Sans', monospace , cursive;
+    font-family: 'Black Han Sans', monospace, cursive;
+}
+
+div#logo{
+    text-align: center;
 }
