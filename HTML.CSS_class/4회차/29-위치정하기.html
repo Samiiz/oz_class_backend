@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위치정하기</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            color: white;
+            background-color: orange;
+        }
+        .rel{
+            background-color: red;
+            position: relative;
+            top: 50px;
+            left: 50px;
+        }
+        .abs{
+            position: absolute;
+            right: 50px;
+            top: 50px;
+        }
+        .scroll{
+            height: 2000px;
+        }
+        .fixed{
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="abs">1</div>
+    <div class="rel">2</div>
+    <div class="scroll">3</div>
+    <div class="fixed">ai 챗봇</div>
+</body>
+</html>
