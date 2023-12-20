@@ -1,0 +1,146 @@
+body{
+    background-color: cornflowerblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div.snowman{
+    margin: auto;
+    position: relative;
+    margin-top: 30px;
+}
+div#hat-top{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    z-index: 1;
+    left: 50px;
+}
+#hat-top ~ div{
+    left: 35px;
+    top: 90px
+}
+div#hat-bottom{
+    position: absolute;
+    width: 130px;
+    height: 10px;
+    background-color: white;
+    z-index: 2;
+}
+div#him_head{
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    border: 1px;
+    background-color: antiquewhite;
+    border-radius: 100px;
+    margin-top: 100px;
+    z-index: 1;
+}
+div#l-eye{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(79, 89, 1);
+    border: 1px;
+    border-radius: 100px;
+    left: 75px;
+    top: 150px;
+    z-index: 2;
+}
+div#r-eye{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(79, 89, 1);
+    border: 1px;
+    border-radius: 100px;
+    left: 115px;
+    top: 150px;
+    z-index: 2;
+}
+div#mouse{
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    background-color:red;
+    border: 1px;
+    border-radius: 0 0 100px 100px;
+    z-index: 2100;
+    left: 85px;
+    top: 180px
+}
+div#him_chest{
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: auto;
+    border: 1px;
+    background-color: antiquewhite;
+    border-radius: 100px;
+    z-index: 1;
+}
+div#l-arm{
+    position: absolute;
+    width: 100px;
+    height: 5px;
+    background-color:red;
+    top: 220px;
+    left: 115px;
+    transform: rotate(135deg);
+    z-index: 0;
+}
+div#r-arm{
+    position: absolute;
+    width: 100px;
+    height: 5px;
+    background-color:red;
+    top: 220px;
+    right: 120px;
+    transform: rotate(45deg);
+    z-index: 0;
+}
+div#button1{
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: rgb(79, 89, 1);
+    border: 1px;
+    border-radius: 100px;
+    top: 270px;
+    left: 98px;
+    z-index: 3;
+}
+div#button2{
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: rgb(79, 89, 1);
+    border: 1px;
+    border-radius: 100px;
+    top: 310px;
+    left: 98px;
+    z-index: 3;
+}
+div#button3{
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: rgb(79, 89, 1);
+    border: 1px;
+    border-radius: 100px;
+    top: 350px;
+    left: 98px;
+    z-index: 3;
+}
+div#him_stomach{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    border: 1px;
+    background-color: antiquewhite;
+    border-radius: 100px;
+}
