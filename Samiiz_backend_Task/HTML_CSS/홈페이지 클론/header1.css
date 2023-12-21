@@ -1,81 +1,83 @@
-*{
-    margin: 0;
-    padding: 0;
-    -webkit-text-size-adjust: none;
-    word-break: keep-all;
+header.header{
+    width: 100%;
+    z-index: 999;
+    background-color: white;
+    color: black;
 }
-
-*, :after, :before{
-    box-sizing: border-box;
-}
-
-html{
-    display: block;
-    overflow-y: scroll;
-    -webkit-tap-highlight-color: unset!important;
-}
-
-:root {
-    view-transition-name: root;
-}
-
-body{
-    font-family: 'Noto Sans',sans-serif;
-    color: #000;
-    font-size: 16px;
-    line-height: 1;
-    margin: 0;
-    padding: 0;
-    word-break: break-all;
-    -webkit-text-size-adjust: none;
-    display: block;
-}
-
-
-div{
-    display: block;
-    margin: 0;
-    padding: 0;
-    word-break: break-all;
-}
-
 .header-top{
+    width: 100%;
+    max-width: 1760px;
+    height: 66px;
     padding: 18px 0;
-    position: relative;
-    display: block;
-    margin: 0;
-    word-break: break-all;
-}
+    margin: auto;
 
-.header-top:after {
-    content: "";
-    display: block;
-    clear: both;
+    justify-content: space-between;
 }
-
 .logo{
-    float: left;
-    padding-left: 42px;
-    display: flex;
-    align-items: center;
-}
-
-.logo a img {
-    width: 111.72px;
+    width: 154px;
     height: 30px;
-    vertical-align: top;
+    padding: 0 0 0 42px;
+}
+.logo img{
+    width: 112px;
+    height: 30px;
+}
+.utility{
+    width: 360px;
+    height: 24;
+    align-items: center;
+    margin-right: 150px;
+    justify-content: right;
+}
+.utility span, .utility img{
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px 0 0;
+}
+.utility img#search1{
+    width: 24px;
+    height: 24px;
+}
+.utility img#personal{
+    width: 24px;
+    height: 24px;
+}
+.utility img#cart1{
+    width: 24px;
+    height: 24px;
+}
+.utility span#company{
+    width: 56px;
+    height: 20px;
+}
+.utility span#b2b{
+    width: 45px;
+    height: 20px;
+}
+.utility img#search2{
+    width: 24px;
+    height: 24px;
+}
+.utility img#cart2{
+    width: 24px;
+    height: 24px;
+}
+.hiden #search2, #cart2{
+    margin-right: 1rem;
     padding: 0;
 }
-
-fieldset, img {
-    border: 0;
+.hiden{
+    display: none;
 }
 
-fieldset, img {
-    border: 0 none;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
+@media screen and (max-width: 950px ){
+    .visible{
+        display: none;
+    }
+    .hiden{
+        display: block;
+    }
+    .utility{
+        margin-right: 0;
+    }
 }

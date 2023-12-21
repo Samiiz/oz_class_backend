@@ -4,41 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LGE.COM | LG전자</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 16px;
+        }
+        body{
+            margin: 0;
+        }
+        .flex{
+            display: flex;
+        }
+        .main{
+            padding: 18px 0;
+        }
+    </style>    
     <link href="header1.css" rel="stylesheet">
     <link href="header2.css" rel="stylesheet">
     <link href="banner.css" rel="stylesheet">
     <link href="footer.css" rel="stylesheet">
-    <style>
-        
-    </style>
 </head>
 <body>
-    <header>
-        <div class="header-top">
-            <div class="logo">
-                <a>
+    <div class="container">
+        <header class="header">
+            <div class="header-top flex">
+                <div class="logo">
                     <img 
-                    class="logo" 
+                    class="logo-i" 
                     src="https://www.lge.co.kr/lg5-common/images/header/lg_logo_new.svg"
                     >
-                </a>
+                </div>
+                <div class="utility flex">
+                    <span>
+                        <img class="hiden" id="search2" src="images/IMG_1469.jpg">
+                    </span>
+                    <span>
+                        <img class="hiden" id="cart2" src="images/IMG_1469 3.jpg">    
+                    </span>
+                    <span>
+                        <img class="visible" id="search1" src="images/IMG_1469.jpg">
+                    </span>
+                    <span>
+                        <img class="visible" id="personal" src="images/IMG_1469 2.jpg">
+                    </span>
+                    <span>
+                        <img class="visible" id="cart1" src="images/IMG_1469 3.jpg">
+                    </span>
+                    <span class="visible" id="company">회사소개</span>
+                    <span class="visible" id="b2b">B2B</span>
+                </div>
             </div>
-            <div class="utility">
-
-            </div>
-        </div>
-        <div class="header-bottom header-new">
-
-        </div>
-    </header>
-
-
-
-    <div class="main-image">
-
-    </div>
-    <div class="main-quick-menu">
-
+            <nav class="header-bottom header-new flex">
+                <ul clsss="info">
+                    <li><strong>제품/소모품</strong></li>
+                    <li><strong>고객지원</strong></li>
+                    <li><strong>구독</strong></li>
+                    <li><strong>이벤트/멤버십</strong></li>
+                    <li id="story"><strong>스토리</strong></li>
+                    <li><strong>베스트샵</strong></li>
+                </ul>
+                <div class="images">
+                    <ul>
+                        <li>
+                            <img 
+                            src="https://www.lge.co.kr/lg5-common/images/header/logo-signature.svg"
+                            >
+                        </li>
+                        <li>
+                            <img 
+                            src="https://www.lge.co.kr/lg5-common/images/header/logo-objet-collection.svg"
+                            >
+                        </li>
+                        <li>
+                            <img 
+                            src="https://www.lge.co.kr/lg5-common/images/header/logo-thinq.svg"
+                            >
+                        </li>
+                        <li>
+                            <img 
+                            src="https://www.lge.co.kr/lg5-common/images/header/logo-lets-gram.svg"
+                            >
+                        </li> 
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="main">
+            <section class="banner">
+                <div class="main-image">
+                    <div>
+                        <img src="https://www.lge.co.kr/kr/home-main-hero/2023-sep/multi-items/multi-items-f/Hero_PC_Multi_230914.jpg">
+                    </div>
+                </div>
+            </section>
+            <section class="quick-menu">
+                <div class="main-quick-menu">
+                    <div class="menu-images flex">
+                        <ul>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/home-main-quick/2023-dec/12month.svg" 
+                                alt="">
+                                <div>혜택 모음</div>
+                            </li>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/home-main-quick/quick-menu-multiple-items.svg" 
+                                alt="">
+                                <div>다품목 할인</div>
+                            </li>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/dcr/images/main/main-home/quick-menu-rental.svg" 
+                                alt="">
+                                <div>구독</div>
+                            </li>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/dcr/images/main/main-home/quick-menu-consumable_0829.svg" 
+                                alt="">
+                                <div>소모품</div>
+                            </li>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/dcr/images/main/main-home/quick-menu-liveshow.svg" 
+                                alt="">
+                                <div>엘라쇼</div>
+                            </li>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/home-main-quick/bestranking_230914/quick-menu-bestranking.svg" 
+                                alt="">
+                                <div>베스트 랭킹</div>
+                            </li>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/dcr/images/main/main-home/quick-menu-promotion.svg" 
+                                alt="">
+                                <div>기획전</div>
+                            </li>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/dcr/images/main/main-home/quick-menu-event.svg" 
+                                alt="">
+                                <div>이벤트</div>
+                            </li>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/dcr/images/main/main-home/quick-menu-solution.svg" 
+                                alt="">
+                                <div>스스로 해결</div>
+                            </li>
+                            <li>
+                                <img src="https://www.lge.co.kr/kr/dcr/images/main/main-home/quick-menu-customer.svg" 
+                                alt="">
+                                <div>고객지원</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="chat-bot">
+                <div class="chat-bot">
+                    <img class="chat-bot" src="https://www.lge.co.kr/lg5-common/images/icons/icon_floating_chatbot.gif">
+                </div>
+            </section>
+        </main>    
     </div>
 </body>
 </html>
