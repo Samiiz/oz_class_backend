@@ -1,0 +1,102 @@
+*{
+    font-family: 'Black Han Sans', monospace, cursive;
+}
+
+body{
+    text-align: center;
+}
+
+div1{
+    width: 450px;
+    padding: 40px 0 60px 0;
+    background-color: #909492;
+    margin: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow:
+    5px 5px 0px 5px rgb(4, 215, 14),
+    10px 10px 0px 5px rgb(15, 1, 1),
+    15px 15px 0px 5px rgb(5, 13, 56),
+    20px 20px 0px 5px rgb(3, 137, 36);
+}
+
+
+input{
+    margin: auto;
+    border: 5px relative black;
+    border-radius: 10px;
+}
+
+.pesonal-info{
+    align-self: center;
+    height: 30px;
+    width:  300px;
+    margin: 10px 0;
+}
+
+.pesonal-info2{
+    height: 30px;
+    width: 70px;
+    margin: 0 5px;
+}
+
+.phonenumber{
+    width: 315px;
+    margin-top: 10px;
+    margin-left: 67px;
+    margin-bottom: 10px;
+}
+
+#p_num1{
+    text-align: center;
+}
+
+#p_num2{
+    text-align: center;
+}
+
+#p_num3{
+    text-align: center;
+}
+
+.certified{
+    display: flex;
+    justify-content: right;
+    margin: auto;
+}
+
+.certifieds{
+    font-size: 12px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+button{
+    border-radius: 5px;
+}
+
+.pesonal-info3{
+    height: 30px;
+    width: 300px;
+    margin: 5px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.gender{
+    margin: 10px 0;
+}
+
+#join{
+    height: 40px;
+    width: 300px;
+}
+#join:hover{
+    color: white;
+    background-color: gray;
+}
+#join:active{
+    color: white;
+    background-color: black;}
