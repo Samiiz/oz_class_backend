@@ -1,0 +1,94 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: aquamarine;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container.text{
+    display: flex;
+}
+.container h1{
+    margin-top: 0;
+    flex-wrap: wrap;
+}
+#size{
+    position: absolute;
+    right: 1px;
+}
+
+@media screen and (max-width:1920px) {
+    #pc{
+        display: inline-block;
+    }
+    #mac-book{
+        display: none;
+    }
+    #i-pad{
+        display: none;
+    }
+    #trash{
+        display: none;
+    }
+}
+
+@media screen and (max-width:1440px) {
+    .container{
+        background-color: silver;
+        color: #515255;
+    }
+    #pc{
+        display: none;
+    }
+    #mac-book{
+        display: inline-block;
+    }
+    #i-pad{
+        display: none;
+    }
+    #trash{
+        display: none;
+    }
+}
+
+@media screen and (max-width:1366px) {
+    .container{
+        background-color: blue;
+        color: burlywood;
+    }
+    #pc{
+        display: none;
+    }
+    #mac-book{
+        display: none;
+    }
+    #i-pad{
+        display: inline-block;
+    }
+    #trash{
+        display: none;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .container{
+        background-color: #515255;
+        color: coral;
+    }
+    #pc{
+        display: none;
+    }
+    #mac-book{
+        display: none;
+    }
+    #i-pad{
+        display: none;
+    }
+    #trash{
+        display: inline-block;
+    }
+}
