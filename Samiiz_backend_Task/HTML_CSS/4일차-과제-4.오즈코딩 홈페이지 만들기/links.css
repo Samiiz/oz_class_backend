@@ -1,0 +1,47 @@
+.links{
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.links div{
+    width: 280px;
+    height: 350px;
+    margin: 50px 50px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid wheat;
+    border-radius: 15px;
+}
+.links div i{
+    margin-top: 30px;
+}
+a {
+    color: wheat;
+    text-decoration: none;
+}
+.links div:hover{
+    background-color: wheat;
+    color: black;
+    border: 5px solid violet;
+    .fast{
+        color: black;
+    }
+    .learn {
+        color: black;
+    }
+    .play{
+        color: black;
+    }
+}
+
+
+@media screen and (max-width: 769px) {
+    .links{
+        flex-direction: column;
+    }
+    .links div{
+        margin-top: 50px;
+    }
+}
