@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐러셀</title>
+    <style>
+
+        section div{
+            margin: auto;
+        }
+
+        .buttons{
+            display: flex;
+            justify-content: center;
+        }
+
+        .slide{
+            margin-right: 10px;
+        }
+
+        .mode{
+            margin-left: 40px;
+        }
+
+        #slider-container {
+            width: 800px;
+            overflow: hidden;
+        }
+
+        #slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-item {
+            width: 800px;
+            flex: 0 0 auto;
+        }
+
+        .flex{
+            display: flex;
+        }
+
+        div img{
+            width: 800px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <section class="flex">
+        <div id="slider-container">
+            <div id="slider">
+                <div class="slider-item"><img src="images/이미지1.png" alt="이미지1"></div>
+                <div class="slider-item"><img src="images/이미지2.png" alt="이미지2"></div>
+                <div class="slider-item"><img src="images/이미지3.png" alt="이미지3"></div>
+            </div>
+        </div>
+    </section>
+    <section class="buttons flex">
+        <button class="slide" onclick="slide(1)">1</button>
+        <button class="slide" onclick="slide(2)">2</button>
+        <button class="slide" onclick="slide(3)">3</button>
+        <button class="mode" id="white">white</button>
+        <button class="mode" id="black">black</button>
+    </section>
+
+    <script>
+        const slider = document.getElementById("slider");
+        const sliderWidth = document.querySelector(".slider-item").offsetWidth;
+        let currentIndex = 0;
+
+        function slide(index) {
+            currentIndex = index - 1;
+            const newPosition = -currentIndex * sliderWidth;
+            slider.style.transform = `translateX(${newPosition}px)`;
+        }
+
+        const whiteBtn = document.getElementById("white")
+        const blackBtn = document.getElementById("black")
+        const body = document.body
+
+        const handleClick = function(event){
+            if(event.target.id === "white"){
+                body.style.backgroundColor = "white"
+            }else if(event.target.id === "black"){
+                body.style.backgroundColor = "black"
+            }
+        }
+
+        whiteBtn.addEventListener("click", handleClick)
+        blackBtn.addEventListener("click", handleClick)
+    </script>
+</body>
+</html>
