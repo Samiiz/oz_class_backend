@@ -19,38 +19,38 @@
  */
 
 function question(candies, friends) {
-    // 여기에서 코드 작성해주세요!
-    let result;
-    result = (candies - (candies % friends)) / friends
+  // 여기에서 코드 작성해주세요!
+  let result;
+  result = (candies - (candies % friends)) / friends;
 
-    return result;
+  return result;
 }
 
 // 여기는 결과값 함수이므로 신경쓰지 않으셔도 됩니다!
 Test(
-    question,
-    [
-        [32, 6],
-        [56, 4],
-        [34, 5],
-        [73, 6],
-        [23, 3],
-        [45, 7],
-        [89, 8],
-        [73, 9],
-    ],
-    [5, 14, 6, 12, 7, 6, 11, 8]
+  question,
+  [
+    [32, 6],
+    [56, 4],
+    [34, 5],
+    [73, 6],
+    [23, 3],
+    [45, 7],
+    [89, 8],
+    [73, 9],
+  ],
+  [5, 14, 6, 12, 7, 6, 11, 8]
 );
 
 function Test(question, conditions, results) {
-    for (let index in results) {
-        const result = question(...conditions[index]) === results[index];
-        console.log(`테스트 ${+index + 1}`, result);
-        if (!result) {
-            console.log('테스트에 통과하지 못했습니다.');
-            return;
-        }
+  for (let index in results) {
+    const result = question(...conditions[index]) === results[index];
+    console.log(`테스트 ${+index + 1}`, result);
+    if (!result) {
+      console.log("테스트에 통과하지 못했습니다.");
+      return;
     }
+  }
 
-    console.log('테스트에 통과하셨습니다!');
+  console.log("테스트에 통과하셨습니다!");
 }
