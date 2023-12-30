@@ -1,34 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>기말고사 점수</title>
+    <style>
+        .standard {
+            text-align: center;
+        }
+        table, th, td{
+            border: 1px solid dimgray;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 2px 5px;
+        }
+        .grade th td{
+            text-align: left;
+        }
+        p{
+            font-size: 25px;
+            color: black;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>성적표</h1>
-        <tr>
-            <th>점수
-                <td>90이상</td>
-                <td>80~89점</td>
-                <td>70~79점</td>
-                <td>60~69점</td>
-                <td>60점 미만</td>
-            </th>
-            <th>학점
-                <td>A</td>
-                <td>B</td>
-                <td>C</td>
-                <td>D</td>
-                <td>F</td>
-            </th>
-        </tr>
-        <div class="my__credit"></div>
+        <table>
+            <thead>
+                <tr class="standard">
+                    <th>점수
+                        <td>90이상</td>
+                        <td>80~89점</td>
+                        <td>70~79점</td>
+                        <td>60~69점</td>
+                        <td>60점 미만</td>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="grade">   
+                    <th>학점
+                        <td>A</td>
+                        <td>B</td>
+                        <td>C</td>
+                        <td>D</td>
+                        <td>F</td>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <div class="myCredit" id="myCredit"></div>
     </div>
 
     <script>
-        
+        const myCredit = document.getElementById("myCredit")
+        const prptCredit = parseInt(prompt("당신의 점수를 입력하세요"))
+
+        if( prptCredit < 60){
+            const Fcredit = document.createElement("p")
+            Fcredit.textContent = `나의 기말고사 점수는 ${prptCredit}점, 학점은 F!!`
+            myCredit.append(Fcredit)
+        }else if( 60 <= prptCredit && prptCredit <= 69){
+            const Dcredit = document.createElement("p")
+            Dcredit.textContent = `나의 기말고사 점수는 ${prptCredit}점, 학점은 D!!`
+            myCredit.appendChild(Dcredit)
+        }else if( 70 <= prptCredit && prptCredit <= 79){
+            const Ccredit = document.createElement("p")
+            Ccredit.textContent = `나의 기말고사 점수는 ${prptCredit}점, 학점은 C!!`
+            myCredit.appendChild(Ccredit)
+        }else if( 80 <= prptCredit && prptCredit <= 89){
+            const Bcredit = document.createElement("p")
+            Bcredit.textContent = `나의 기말고사 점수는 ${prptCredit}점, 학점은 B!!`
+            myCredit.appendChild(Bcredit)
+        }else if( 90 <= prptCredit && prptCredit <= 100){
+            const Acredit = document.createElement("p")
+            Acredit.textContent = `나의 기말고사 점수는 ${prptCredit}점, 학점은 A!!`
+            myCredit.appendChild(Acredit)
+        }
+        else{
+            alert("점수를 잘못입력하셨습니다 새로고침 후 다시 시도해주세요")
+        }
     </script>
 </body>
 </html>
