@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "CookieRun-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "CookieRun-Regular";
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.main {
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 500px;
+  height: 500px;
+  background-color: burlywood;
+  border: 1px solid black;
+  border-radius: 100%;
+  margin: 100px auto 0 auto;
+}
+
+p {
+  margin: 40px;
+  font-size: 85px;
+  font-weight: 900;
+}
+
+.btns {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  margin: 20px;
+  width: 80px;
+  height: 60px;
+  border: none;
+  border-radius: 15px;
+
+  font-size: 25px;
+  font-weight: 900;
+}
