@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>미스테리 숫자 맞추기</title>
+    <style>
+      @font-face {
+        font-family: "CookieRun-Regular";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      * {
+        font-family: "CookieRun-Regular";
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 32px;
+        background-color: darkcyan;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      .submit {
+        font-size: 0.5em;
+        width: 110px;
+        height: 45px;
+        border: 2px solid;
+        border-radius: 6px;
+        color: white;
+        background-color: salmon;
+        cursor: pointer;
+      }
+
+      .submit:active {
+        font-size: 0.6em;
+        width: 120px;
+        height: 50px;
+      }
+
+      #quiz {
+        width: 200px;
+        height: 40px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container flex" id="container">
+      <form>
+        <h1>😝Mystery Number 맞추기😝</h1>
+        <br />
+        <h3>1부터 100사이의 숫자를 입력하세요!</h3>
+        <input class="qiuz" id="quiz" />
+        <input class="submit" id="submit" type="submit" value="과연~!!" />
+        <div class="hint" id="hint"></div>
+      </form>
+    </div>
+
+    <script>
+      const quiz = document.querySelector("#quiz");
+      const submit = document.getElementById("submit");
+      const rn = Math.random();
+      const MAX_NUM = 100;
+      const MIN_NEM = 1;
+      const result = Math.floor(rn * MAX_NUM + MIN_NEM);
+
+      submit.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const guess = parseInt(quiz.value, 10);
+
+        if (guess > result) {
+          const hint = document.getElementById("hint");
+          hint.innerHTML = "힌트 : 숫자가 너무 커요!";
+        } else if (guess < result) {
+          const hint = document.getElementById("hint");
+          hint.innerHTML = "힌트 : 숫자가 너무 작아요!";
+        } else if (guess === result) {
+          const hint = document.getElementById("hint");
+          hint.innerHTML = "정답입니다!!";
+          alert("축하합니다 정답입니다!!");
+        } else {
+          alert("잘못 일력하셨습니다");
+        }
+      });
+    </script>
+  </body>
+</html>
