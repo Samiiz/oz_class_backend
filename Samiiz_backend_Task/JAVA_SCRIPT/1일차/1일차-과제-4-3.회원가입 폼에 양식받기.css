@@ -6,7 +6,7 @@ body {
   text-align: center;
 }
 
-div1 {
+.ground {
   width: 450px;
   padding: 40px 0 60px 0;
   background-color: #909492;
