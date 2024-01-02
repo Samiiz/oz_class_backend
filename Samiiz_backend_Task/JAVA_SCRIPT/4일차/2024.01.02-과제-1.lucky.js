@@ -19,26 +19,25 @@
  */
 
 function question(n, m) {
-    // 여기에서 코드 작성해주세요!
-    let result;
-    result = 0
+  // 여기에서 코드 작성해주세요!
+  let result;
+  result = 0;
 
-    const MAX_NUM = 9
-    const MIN_NUM = 1
+  const MAX_NUM = 9;
+  const MIN_NUM = 1;
 
-    for(i = 1; i <= 10; i++){
+  for (i = 1; i <= 10; i++) {
+    const lucky = Math.floor(Math.random() * MAX_NUM) + MIN_NUM;
 
-        const lucky = Math.floor(Math.random() * MAX_NUM) + MIN_NUM
-
-        if(lucky == n){
-            console.log(`${i}회차 *행운의 숫자* : ${lucky} 당첨!!`)
-            result++
-        }
-        else{console.log(`${i}회차 *행운의 숫자* : ${lucky} 낙첨`)}
+    if (lucky == n) {
+      console.log(`${i}회차 *행운의 숫자* : ${lucky} 당첨!!`);
+      result++;
+    } else {
+      console.log(`${i}회차 *행운의 숫자* : ${lucky} 낙첨`);
     }
+  }
 
-    console.log(`당첨금은 ${m * result}원 입니다`)
-    
+  console.log(`당첨금은 ${m * result}원 입니다`);
 }
 
 question(4, 10000);
