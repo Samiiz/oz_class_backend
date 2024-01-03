@@ -24,43 +24,43 @@
  */
 
 function question(str) {
-    // 여기에서 코드 작성해주세요!
-    let result;
-    // 알파벳 이외의 문자 제거 및 소문자로 변환
-    const cleanedStr = str.replace(/[^a-zA-Z]/g, '').toLowerCase();
+  // 여기에서 코드 작성해주세요!
+  let result;
+  // 알파벳 이외의 문자 제거 및 소문자로 변환
+  const cleanedStr = str.replace(/[^a-zA-Z]/g, "").toLowerCase();
 
-    // 문자열을 배열로 변환하고 뒤집음
-    const reversedStr = cleanedStr.split('').reverse().join('');
+  // 문자열을 배열로 변환하고 뒤집음
+  const reversedStr = cleanedStr.split("").reverse().join("");
 
-    // 두 문자열을 비교하여 펠린드롬 여부 반환
-    result = cleanedStr === reversedStr;
-    return result;
+  // 두 문자열을 비교하여 펠린드롬 여부 반환
+  result = cleanedStr === reversedStr;
+  return result;
 }
 
 // 여기는 결과값 함수이므로 신경쓰지 않으셔도 됩니다!
 Test(
-    question,
-    [
-        ['A man, a plan, a canal: Panama'],
-        ['race a car'],
-        ['Was it a car or a cat I saw?'],
-        ["No 'x' in Nixon"],
-        ['No lemon, no melon'],
-        ['A Santa at NASA'],
-        ['Palindrome example'],
-    ],
-    [true, false, true, true, true, true, false]
+  question,
+  [
+    ["A man, a plan, a canal: Panama"],
+    ["race a car"],
+    ["Was it a car or a cat I saw?"],
+    ["No 'x' in Nixon"],
+    ["No lemon, no melon"],
+    ["A Santa at NASA"],
+    ["Palindrome example"],
+  ],
+  [true, false, true, true, true, true, false]
 );
 
 function Test(question, conditions, results) {
-    for (let index in results) {
-        const result = question(...conditions[index]) === (results[index] === true);
-        console.log(`테스트 ${+index + 1}`, result);
-        if (!result) {
-            console.log('테스트에 통과하지 못했습니다.');
-            return;
-        }
+  for (let index in results) {
+    const result = question(...conditions[index]) === (results[index] === true);
+    console.log(`테스트 ${+index + 1}`, result);
+    if (!result) {
+      console.log("테스트에 통과하지 못했습니다.");
+      return;
     }
+  }
 
-    console.log('테스트에 통과하셨습니다!');
+  console.log("테스트에 통과하셨습니다!");
 }
