@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아이스크림 리스트 정리</title>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="btns">
+        <button id="addButton">아이스크림 종류 추가</button>
+        <button id="displayRandomButton">아이스크림 이름 출력</button>
+        <button id="displayListButton">입력한 아이스크림 목록 출력</button>
+        <button id="resetButton">다시해볼까?</button>
+      </div>
+      <div>
+        <h1>아이스크림 목록</h1>
+        <p></p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const bar_name = [
+      "거북알",
+      "거북이",
+      "고드름",
+      "깐도리",
+      "끌레도르",
+      "누가바",
+      "대롱대롱",
+      "더블비얀코",
+      "더위사냥",
+      "돼지바",
+      "리틀텐",
+      "마카롱아이스바",
+      "메로나",
+      "바밤바",
+      "보석바",
+      "부라보콘",
+      "비비빅",
+      "빅바",
+      "빙빙바",
+      "빠삐코",
+      "빵또아",
+      "빵빠레",
+      "뽕따",
+      "설레임",
+      "셀렉션",
+      "순수밀크",
+      "슈퍼콘",
+      "쌍쌍바",
+      "쑥떡쑥떡바",
+      "아맛나",
+      "아시나요",
+      "아이스파인",
+      "엔초",
+      "요맘때",
+      "옥메와까",
+      "옥동자",
+      "월드콘",
+      "조안나",
+      "죠크박",
+      "죠스바",
+      "수박바",
+      "쮸쮸바",
+      "찰떡아이스",
+      "캔디바",
+      "쿠앤크",
+      "쿠키오",
+      "토마토마",
+      "투게더",
+      "티코",
+      "폴라포",
+      "하겐다즈",
+      "호두마루",
+    ];
+    const bar_list = [];
+    function addIceCream() {
+      const userInput = prompt("아이스크림 종류를 입력하세요 (예: 바밤바)");
+      if (userInput && !bar_list.includes(userInput)) {
+        bar_list.push(userInput);
+      }
+    }
+
+    function displayRandomIceCream() {
+      const randomIndex = Math.floor(Math.random() * bar_name.length);
+      const randomIceCream = bar_name[randomIndex];
+
+      if (!bar_list.includes(randomIceCream)) {
+        alert(randomIceCream);
+        bar_list.push(randomIceCream);
+      }
+    }
+
+    function displayIceCreamList() {
+      const listContainer = document.querySelector("div > p");
+      listContainer.textContent = bar_list.join(", ");
+    }
+
+    function resetList() {
+      const listContainer = document.querySelector("div > p");
+      listContainer.innerHTML = "";
+    }
+
+    document.getElementById("addButton").addEventListener("click", addIceCream);
+    document
+      .getElementById("displayRandomButton")
+      .addEventListener("click", displayRandomIceCream);
+    document
+      .getElementById("displayListButton")
+      .addEventListener("click", displayIceCreamList);
+    document.getElementById("resetButton").addEventListener("click", resetList);
+  </script>
+</html>
