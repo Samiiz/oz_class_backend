@@ -52,10 +52,12 @@ def solution(str1, str2):
             answer = 1
             break
     return answer
-
+## 리스트 컴플리헨션 x for x in range(10) 이걸보니 더 이해가 안간다
 
 # 문제 : 두 개의 문자열 str1, str2가 공백으로 구분되어 입력으로 주어집니다.
 #        입출력 예와 같이 str1과 str2을 이어서 출력하는 코드를 작성해 보세요.
+
+# set()을 사용하면 될줄알았는데 문자열도 중복이 있으면 없애버려서 안됨!!
 
 
 str1, str2 = input().strip().split(' ')
