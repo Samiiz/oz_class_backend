@@ -19,15 +19,37 @@ lst100 = soup.select(".lst100")
 lst_all = lst50 + lst100
 rank = 1
 
+singer_base_link = "https://www.melon.com/artist/timeline.htm?artistId="
+album_base_link =  "https://www.melon.com/album/detail.htm?albumId="
+
+def get_nums(song_num_text):
+    song_num = []
+    for num in song_num_text:
+        if num.isdigit():
+            song_num.append(num)
+    song_num = "".join(song_num)
+    return song_num
+
 for i in lst_all:
+    
+    title = i.select_one(".ellipsis.rank01 a")
+
+    singer = i.select_one(".ellipsis.rank02 a")
+    singer_link = get_nums(singer["href"])
+
+    album = i.select_one(".ellipsis.rank03 a")
+    album_link = get_nums(album["href"])
+
     print("------------------------------")
     # print(f'[순위 : {rank1}]')
-    title = i.select_one(".ellipsis.rank01 a")
-    singer = i.select_one(".ellipsis.rank02 a")
-    album = i.select_one(".ellipsis.rank03 a")
+    
     print(f'{rank}위는 "{singer.text}"의 "{title.text}"입니다!!\n{album.text}의 수록곡 입니다!!')
+    print(f'가수 정보 => "{singer_base_link + singer_link}"')
+    print(f'앨범 정보 => "{album_base_link + album_link}"')
+
     # print(f'제목 : {title.text}')
     # print(f'가수 : {singer.text}')
     # print(f'앨범 : {album.text}')
     print("------------------------------")
+
     rank += 1
