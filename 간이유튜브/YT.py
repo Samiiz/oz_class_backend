@@ -14,12 +14,11 @@ url = base_url + key_word
 driver = webdriver.Chrome()
 # 브라우저를 조작하여 url에서 정보를 get! 받아온다
 driver.get(url)
-time.sleep(5)
 
 # for문을 이용하여 스크롤을 내린다
 # 스크롤 안됨
 for i in range(10):
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+    driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
     time.sleep(1)
 
 # html 변수에 driver.get(url)로 받아온 정보중 page_source 페이지 정보를 할당한다.
