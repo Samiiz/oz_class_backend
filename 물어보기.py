@@ -60,16 +60,22 @@ def solution(str1, str2):
 # set()을 사용하면 될줄알았는데 문자열도 중복이 있으면 없애버려서 안됨!!
 
 
-str1, str2 = input().strip().split(' ')
+# str1, str2 = input().strip().split(' ')
 
 solved_str = str1 + str2
-print(solved_str)
+# print(solved_str)
 
 # 타인 정답
 # 1 
-print(input().strip().replace(' ', ''))
+# print(input().strip().replace(' ', ''))
 # 2
-str1, str2 = input().strip().split(' ')
-print(str1, str2, sep='')
+# str1, str2 = input().strip().split(' ')
+# print(str1, str2, sep='')
 # 3
-print(''.join(input().strip().split(' ')))
+# print(''.join(input().strip().split(' ')))
+
+# 우리는 웹 개발인데 파이썬을 집중하는 이유
+# 내 생각 => 어짜피 프론트단이랑 협업시 우리는 JSON형태로 주고 받을텐데
+#            자바스크립트도 mysql과 연동해서 사용할 수 있다면 파이썬을 이용하는 이유가 있을까?
+#            JSON형태로 주고받기에는 자바스크립트가 더욱 편하고 회사입장에서는
+#            인원들을 사용하는데 있어서 더욱 효율적일텐데 그럼에도 불구하고 파이썬을 사용하는 이유!
