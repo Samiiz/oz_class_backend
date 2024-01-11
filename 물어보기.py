@@ -62,7 +62,7 @@ def solution(str1, str2):
 
 # str1, str2 = input().strip().split(' ')
 
-solved_str = str1 + str2
+# solved_str = str1 + str2
 # print(solved_str)
 
 # 타인 정답
