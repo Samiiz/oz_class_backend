@@ -41,7 +41,7 @@ if videos:
         print(f'-----{rank}번----------------------')
         print(f'제목 : {"".join(title.text.split())}')
         print(f'작성자 : {"".join(name.text.split())}')
-        print(f'게시날짜 : {date.text if date else "라이브 방송중"}')
+        print(f'{date.text if date else "라이브 방송중"} 게시')
         print(f'{view.text}')
         print("------------------------------")
 
