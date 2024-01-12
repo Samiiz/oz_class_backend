@@ -35,7 +35,6 @@ for count in range(search_key_word_count):
     driver.find_element(By.CSS_SELECTOR, ".search_btn_box").click()
     time.sleep(1)
 
-
     driver.find_element(By.CSS_SELECTOR, ".input_search.show_placeholder_on_focus").send_keys(brands[count])
     time.sleep(1)
 
