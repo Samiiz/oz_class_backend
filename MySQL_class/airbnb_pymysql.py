@@ -41,15 +41,17 @@ with connection.cursor() as cursor:
     # cursor.execute(sql, (input('Enter order ID : ')))
     # connection.commit()
 
-    # 문제 7 : 즉정 제품 검색
-    sql = "SELECT * FROM Products WHERE productName LIKE %s"
-    cursor.execute(sql, (input('Enter product name : ')))
-    for product in cursor.fetchall():
-        print(product['productName'])
+    # # 문제 7 : 즉정 제품 검색
+    # sql = "SELECT * FROM Products WHERE productName LIKE %s"
+    # cursor.execute(sql, (input('Enter product name : ')))
+    # for product in cursor.fetchall():
+    #     print(product['productName'])
 
     # 문제 8 : 특정 고객의 모든 주문 조회
+    sql = "SELECT * FROM Orders WHERE customerID = %s"
+    cursor.execute(sql, (input('Enter customer ID : ')))
+    for order in cursor.fetchall():
+        print(order)
 
-
-    # 문제 9 : 가장 많이 주문한 고객 찾기
-
+    
 cursor.close()
