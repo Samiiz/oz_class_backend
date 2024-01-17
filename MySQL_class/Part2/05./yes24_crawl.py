@@ -50,77 +50,76 @@ for pageNum in range(1,4):
 #     else:
 #         break
 
-browser.get(link_list[0])
+browser.get(link_list[2])
 
 title = browser.find_element(By.CLASS_NAME, 'gd_name').text
-print(f'\n제목 : {title}')
+# print(f'\n제목 : {title}')
 
 author = browser.find_element(By.CLASS_NAME, 'gd_auth').text
-print(f'저자 : {author}')
+# print(f'저자 : {author}')
 
 publisher = browser.find_element(By.CLASS_NAME, 'gd_pub').text
-print(f'출판사 : {publisher}')
+# print(f'출판사 : {publisher}')
 
 publishing = browser.find_element(By.CLASS_NAME, 'gd_date').text
-print(f'출판일 : {publishing}')
+# print(f'출판일 : {publishing}')
 
 rating = browser.find_element(By.CLASS_NAME, 'yes_b').text
-print(f'평점 : {rating}점')
+# print(f'평점 : {rating}점')
 
 review = browser.find_element(By.CLASS_NAME, 'txC_blue').text
-print(f'리뷰 : {review}개')
+# print(f'리뷰 : {review}개')
 
 sales = browser.find_element(By.CLASS_NAME, 'gd_sellNum').text.split(' ')[2]
-print(f'판매지수 : {sales}권')
+# print(f'판매지수 : {sales}권')
 
 price = browser.find_element(By.CLASS_NAME, 'nor_price').text
-print(f'판매가 : {price}')
+# print(f'판매가 : {price}')
 
 rangkins = browser.find_element(By.CLASS_NAME, 'gd_best').text
 
 if ' | ' in rangkins:
-    rangking = rangkins.split(' | ')[0]
-    print(rangking if rangking else '랭킹 없음')
-
-    rangking_weeks = rangkins.split(' | ')[1]
-    print(rangking_weeks if rangking_weeks else '주간랭킹 없음')
+    rangking = rangkins.split(' | ')[0].split(' ')[-1]
+    # print(rangking if rangking else '랭킹 없음')
+    rangking_weeks_text = rangkins.split(' | ')[1].split(' ')[1:]
+    rangking_weeks = " ".join(word.upper() for word in rangking_weeks_text)
+    # print(rangking_weeks if rangking_weeks else '주간랭킹 없음')
 
 elif rangkins:
-    rangking = rangkins.split(' | ')[0]
-    print(rangking if rangking else '랭킹 없음')
-    print("주간랭킹 없음")
+    rangking = rangkins.split(' | ')[0].split(' ')[-1]
+    rangking_weeks = "null"
+    # print(rangking if rangking else '랭킹 없음')
+    # print("주간랭킹 없음")
 else:
-    print('랭킹 정보 없음')
+    rnaking = "null"
+    rangking_weeks = "null"
+    # print('랭킹 정보 없음')
 
 
 browser.quit()
 
-# 책 제목
-# title
 
-# 저자
-# author
+# 데이터 베이스 연동 후 -> 수집한 데이터를 DB에 저장
+import pymysql
 
-# 출판사
-# publisher
+connection = pymysql.connect(
+    host='localhost',
+    user='root',
+    password='samiiz',
+    db='yes24',
+    charset='utf8mb4',
+    cursorclass=pymysql.cursors.DictCursor
+)
 
-# 출판일
-# publishing
+with connection.cursor() as cursor:
 
-# 평점
-# rating
+    for link in link_list:
 
-# 리뷰
-# review
+        browser.get(link)
 
-# 판매지수
-# sales
+        sql = ("""
+            INSERT INTO Books (`title`, `author`, `publisher`, `publishing`, `rating`, `review`, `sales`, `price`, `rangking`, `rangking_weeks`)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """)
 
-# 가격
-# price
-
-# 국내도서랭킹
-# rangking
-
-# 국내도서 TOP100
-# rangking_weeks
+        cursor.execute(sql, (title, author, publisher, publishing, rating, review, sales, price, rangking, rangking_weeks))
