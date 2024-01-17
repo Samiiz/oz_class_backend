@@ -25,10 +25,16 @@ with connection.cursor() as cursor:
     # cursor.execute(sql, (1, 1))
     # connection.commit()
 
-    # 문제 4 : 고객별 총 주문금액 계산
-    sql = "SELECT customerID, SUM(totalAmount) AS totalAmount FROM Orders GROUP BY customerID"
-    cursor.execute(sql)
-    for customer in cursor.fetchall():
-        print(customer)
+    # # 문제 4 : 고객별 총 주문금액 계산
+    # sql = "SELECT customerID, SUM(totalAmount) AS totalAmount FROM Orders GROUP BY customerID"
+    # cursor.execute(sql)
+    # for customer in cursor.fetchall():
+    #     print(customer)
+
+    # 문제 5 : 고객 이메일 업데이트
+    sql = "UPDATE Customers SET email = %s WHERE customerID = %s"
+    cursor.execute(sql, (input('Enter new email: '), input('Enter customer ID : ')))
+    connection.commit()
+
 
 cursor.close()
