@@ -20,10 +20,15 @@ with connection.cursor() as cursor:
     # for book in cursor.fetchall():
     #     print(book)
 
-    # 문제 3 : 제품 재고 업데이트
-    sql = "UPDATE Products SET stockQuantity = stockQuantity - %s WHERE productID = %s"
-    cursor.execute(sql, (1, 1))
-    connection.commit()
+    # # 문제 3 : 제품 재고 업데이트
+    # sql = "UPDATE Products SET stockQuantity = stockQuantity - %s WHERE productID = %s"
+    # cursor.execute(sql, (1, 1))
+    # connection.commit()
 
+    # 문제 4 : 고객별 총 주문금액 계산
+    sql = "SELECT customerID, SUM(totalAmount) AS totalAmount FROM Orders GROUP BY customerID"
+    cursor.execute(sql)
+    for customer in cursor.fetchall():
+        print(customer)
 
 cursor.close()
