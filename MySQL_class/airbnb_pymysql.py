@@ -47,11 +47,16 @@ with connection.cursor() as cursor:
     # for product in cursor.fetchall():
     #     print(product['productName'])
 
-    # 문제 8 : 특정 고객의 모든 주문 조회
-    sql = "SELECT * FROM Orders WHERE customerID = %s"
-    cursor.execute(sql, (input('Enter customer ID : ')))
-    for order in cursor.fetchall():
-        print(order)
+    # # 문제 8 : 특정 고객의 모든 주문 조회
+    # sql = "SELECT * FROM Orders WHERE customerID = %s"
+    # cursor.execute(sql, (input('Enter customer ID : ')))
+    # for order in cursor.fetchall():
+    #     print(order)
 
-    
+    # 문제 9 : 가장 많이 주문한 고객 찾기
+    sql = "SELECT customerID, COUNT(*) AS orderCount FROM Orders GROUP BY customerID ORDER BY orderCount DESC LIMIT 1"
+    cursor.execute(sql)
+    for customer in cursor.fetchall():
+        print(customer)
+
 cursor.close()
