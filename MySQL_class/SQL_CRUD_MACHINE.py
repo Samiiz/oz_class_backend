@@ -36,6 +36,7 @@ def main():
             where_condition = input("WHERE 조건을 입력하세요 (미사용 시 Enter): ").strip()
             group_by_columns = input("GROUP BY 구문에 사용할 컬럼들을 입력하세요 (예: column1, column2, 미사용 시 Enter): ").strip()
             having_condition = input("HAVING 조건을 입력하세요 (미사용 시 Enter): ").strip()
+            order_by_columns = input("ORDER BY 구문에 사용할 컬럼들을 입력하세요 (예: column1, column2, 미사용 시 Enter): ").strip()
             limit_condition = input("LIMIT 조건을 입력하세요 (미사용 시 Enter): ").strip()
 
             query = f"SELECT {select_columns} FROM {table_name}"
@@ -49,6 +50,8 @@ def main():
                 query += f" GROUP BY {group_by_columns}"
             if having_condition:
                 query += f" HAVING {having_condition}"
+            if order_by_columns:
+                query += f" ORDER BY {order_by_columns}"
             if limit_condition:
                 query += f" LIMIT {limit_condition}"
             
