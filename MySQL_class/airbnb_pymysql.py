@@ -31,10 +31,16 @@ with connection.cursor() as cursor:
     # for customer in cursor.fetchall():
     #     print(customer)
 
-    # 문제 5 : 고객 이메일 업데이트
-    sql = "UPDATE Customers SET email = %s WHERE customerID = %s"
-    cursor.execute(sql, (input('Enter new email: '), input('Enter customer ID : ')))
+    # # 문제 5 : 고객 이메일 업데이트
+    # sql = "UPDATE Customers SET email = %s WHERE customerID = %s"
+    # cursor.execute(sql, (input('Enter new email: '), input('Enter customer ID : ')))
+    # connection.commit()
+
+    # 문제 6 : 주문 취소
+    sql = "DELETE FROM Orders WHERE orderID = %s"
+    cursor.execute(sql, (input('Enter order ID : ')))
     connection.commit()
+
 
 
 cursor.close()
