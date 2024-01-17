@@ -17,9 +17,9 @@ def execute_query(connection, query, args=None):
 def main():
     # pymysql.connect를 이용하여 데이터베이스 연결을 위한 정보를 적는다.
     connection = pymysql.connect(host='localhost',
-                                 user='username',
-                                 password='password',
-                                 db='database_name',
+                                 user='root',
+                                 password='samiiz',
+                                 db='airbnb',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
 
@@ -30,8 +30,8 @@ def main():
         # SELECT입력시
         if i.startswith('SELECT'):
             # 쿼리문 안에 들어갈 내용을 입력하도록 한다.
-            table_name = input("SELECT 작업을 수행할 테이블의 이름을 입력하세요: ").strip()
-            select_columns = input("SELECT 구문에 사용할 컬럼들을 입력하세요 (예: column1, column2): ").strip()
+            select_columns = input("SELECT 구문에 사용할 컬럼들을 입력하세요 (예: *, column1, column2): ").strip()
+            table_name = input("FROM 구문에 사용할 테이블의 이름을 입력하세요: ").strip()
             join_condition = input("JOIN 구문에 사용할 조인 조건을 입력하세요 (예: table2 ON table1.column = table2.column, 미사용 시 Enter): ").strip()
             where_condition = input("WHERE 조건을 입력하세요 (미사용 시 Enter): ").strip()
             group_by_columns = input("GROUP BY 구문에 사용할 컬럼들을 입력하세요 (예: column1, column2, 미사용 시 Enter): ").strip()
