@@ -76,18 +76,23 @@ print(f'판매지수 : {sales}권')
 price = browser.find_element(By.CLASS_NAME, 'nor_price').text
 print(f'판매가 : {price}')
 
-rangking = browser.find_element(By.CLASS_NAME, 'gd_best').text.split(' | ')[0]
-if rangking :
-    print(rangking)
-else:
-    print('랭킹 없음')
+rangkins = browser.find_element(By.CLASS_NAME, 'gd_best').text
 
-rangking_weeks = browser.find_element(By.CLASS_NAME, 'gd_best').text.split(' | ')[1]
-if rangking_weeks :
-    print(rangking_weeks)
+if ' | ' in rangkins:
+    rangking = rangkins.split(' | ')[0]
+    print(rangking if rangking else '랭킹 없음')
+
+    rangking_weeks = rangkins.split(' | ')[1]
+    print(rangking_weeks if rangking_weeks else '주간랭킹 없음')
+
+elif rangkins:
+    rangking = rangkins.split(' | ')[0]
+    print(rangking if rangking else '랭킹 없음')
+    print("주간랭킹 없음")
 else:
-    print('주간랭킹 없음')
- 으아아아아아
+    print('랭킹 정보 없음')
+
+
 browser.quit()
 
 # 책 제목
