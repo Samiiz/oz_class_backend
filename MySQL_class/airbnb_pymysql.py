@@ -36,11 +36,20 @@ with connection.cursor() as cursor:
     # cursor.execute(sql, (input('Enter new email: '), input('Enter customer ID : ')))
     # connection.commit()
 
-    # 문제 6 : 주문 취소
-    sql = "DELETE FROM Orders WHERE orderID = %s"
-    cursor.execute(sql, (input('Enter order ID : ')))
-    connection.commit()
+    # # 문제 6 : 주문 취소
+    # sql = "DELETE FROM Orders WHERE orderID = %s"
+    # cursor.execute(sql, (input('Enter order ID : ')))
+    # connection.commit()
+
+    # 문제 7 : 즉정 제품 검색
+    sql = "SELECT * FROM Products WHERE productName LIKE %s"
+    cursor.execute(sql, (input('Enter product name : ')))
+    for product in cursor.fetchall():
+        print(product['productName'])
+
+    # 문제 8 : 특정 고객의 모든 주문 조회
 
 
+    # 문제 9 : 가장 많이 주문한 고객 찾기
 
 cursor.close()
