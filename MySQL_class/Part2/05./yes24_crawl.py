@@ -6,6 +6,19 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import time
+import pymysql
+import re
+from datetime import datetime
+
+connection = pymysql.connect(
+    host='localhost',
+    user='root',
+    password='samiiz',
+    db='yes24',
+    charset='utf8mb4',
+    cursorclass=pymysql.cursors.DictCursor
+)
+
 
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
@@ -38,78 +51,8 @@ for pageNum in range(1,4):
 
     time.sleep(0.5)
 
-# print(link_list)
-
-# print(len(link_list))
-
-# bookNum = 0
-# for link in link_list:
-#     if bookNum < 72:
-#         browser.get(link[bookNum])
-#         bookNum += 1
-#     else:
-#         break
-
-browser.get(link_list[2])
-
-title = browser.find_element(By.CLASS_NAME, 'gd_name').text
-# print(f'\n제목 : {title}')
-
-author = browser.find_element(By.CLASS_NAME, 'gd_auth').text
-# print(f'저자 : {author}')
-
-publisher = browser.find_element(By.CLASS_NAME, 'gd_pub').text
-# print(f'출판사 : {publisher}')
-
-publishing = browser.find_element(By.CLASS_NAME, 'gd_date').text
-# print(f'출판일 : {publishing}')
-
-rating = browser.find_element(By.CLASS_NAME, 'yes_b').text
-# print(f'평점 : {rating}점')
-
-review = browser.find_element(By.CLASS_NAME, 'txC_blue').text
-# print(f'리뷰 : {review}개')
-
-sales = browser.find_element(By.CLASS_NAME, 'gd_sellNum').text.split(' ')[2]
-# print(f'판매지수 : {sales}권')
-
-price = browser.find_element(By.CLASS_NAME, 'nor_price').text
-# print(f'판매가 : {price}')
-
-rangkins = browser.find_element(By.CLASS_NAME, 'gd_best').text
-
-if ' | ' in rangkins:
-    rangking = rangkins.split(' | ')[0].split(' ')[-1]
-    # print(rangking if rangking else '랭킹 없음')
-    rangking_weeks_text = rangkins.split(' | ')[1].split(' ')[1:]
-    rangking_weeks = " ".join(word.upper() for word in rangking_weeks_text)
-    # print(rangking_weeks if rangking_weeks else '주간랭킹 없음')
-
-elif rangkins:
-    rangking = rangkins.split(' | ')[0].split(' ')[-1]
-    rangking_weeks = "null"
-    # print(rangking if rangking else '랭킹 없음')
-    # print("주간랭킹 없음")
-else:
-    rnaking = "null"
-    rangking_weeks = "null"
-    # print('랭킹 정보 없음')
-
-
-browser.quit()
-
-
 # 데이터 베이스 연동 후 -> 수집한 데이터를 DB에 저장
-import pymysql
-
-connection = pymysql.connect(
-    host='localhost',
-    user='root',
-    password='samiiz',
-    db='yes24',
-    charset='utf8mb4',
-    cursorclass=pymysql.cursors.DictCursor
-)
+contents = 1
 
 with connection.cursor() as cursor:
 
@@ -117,9 +60,100 @@ with connection.cursor() as cursor:
 
         browser.get(link)
 
+        title = browser.find_element(By.CLASS_NAME, 'gd_name').text
+        # print(f'\n제목 : {title}')
+
+        author = browser.find_element(By.CLASS_NAME, 'gd_auth').text
+        # print(f'저자 : {author}')
+
+        publisher = browser.find_element(By.CLASS_NAME, 'gd_pub').text
+        # print(f'출판사 : {publisher}')
+
+        publishing = browser.find_element(By.CLASS_NAME, 'gd_date').text
+
+        match = re.search(r'(\d+)년 (\d+)월 (\d+)일', publishing)
+
+        if match:
+            year, month, day = match.groups()
+            data_obj = datetime(int(year), int(month),int(day))
+            publishing = data_obj.strftime('%Y-%m-%d')
+        else:
+            publishing = '0000-00-00'
+
+        # print(f'출판일 : {publishing}')
+
+        rating = browser.find_element(By.CLASS_NAME, 'yes_b').text
+        # print(f'평점 : {rating}점')
+
+        try:
+            review = browser.find_element(By.CLASS_NAME, 'txC_blue').text
+            if review.isdigit():
+                review = int(review.replace(',', ''))
+            else:
+                review = 0
+        except:
+            print(f'{contents}번째 책의 "review"의 내용을 재확인 하세요.')
+        # print(f'리뷰 : {review}개')
+
+        sales = browser.find_element(By.CLASS_NAME, 'gd_sellNum').text.split(' ')[2]
+        sales = int(sales.replace(',', ''))
+        # print(f'판매지수 : {sales}권')
+
+        price = browser.find_element(By.CLASS_NAME, 'nor_price').text
+        price = int(price.replace(',', '').replace('원', ''))
+        # print(f'판매가 : {price}')
+
+        rankings = browser.find_element(By.CLASS_NAME, 'gd_best').text
+        parts = rankings.split(' | ')
+
+        if len(parts) == 1:
+            ranking = 0
+            ranking_weeks = 0
+        else:
+            try:
+                ranking_part = parts[0]
+                ranking = int(" ".join(filter(str.isdigit, ranking_part)))
+
+            except:
+                ranking = 0
+
+            try:
+                ranking_weeks_part = parts[1]
+                ranking_weeks = int(" ".join(filter(str.isdigit, ranking_weeks_part.split()[-1])))
+
+            except:
+                ranking_weeks = 0
+
+        # if ' | ' in rankings:
+        #     ranking = rankings.split(' | ')[0].split(' ')[-1]
+        #     ranking_weeks_text = rankings.split(' | ')[1].split(' ')[1:]
+        #     ranking_weeks = " ".join(word.upper() for word in ranking_weeks_text)
+        #     print(ranking)
+        #     print(ranking_weeks)
+
+        # elif rankings:
+        #     ranking = rankings.split(' | ')[0].split(' ')[-1]
+        #     ranking_weeks = 0
+        #     print(ranking)
+        #     print(ranking_weeks)
+
+        # else:
+        #     ranking = 0
+        #     ranking_weeks = 0
+        #     print(ranking)
+        #     print(ranking_weeks)
+
+        contents += 1
+
         sql = ("""
-            INSERT INTO Books (`title`, `author`, `publisher`, `publishing`, `rating`, `review`, `sales`, `price`, `rangking`, `rangking_weeks`)
+            INSERT INTO Books (`title`, `author`, `publisher`, `publishing`, `rating`, `review`, `sales`, `price`, `ranking`, `ranking_weeks`)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """)
 
-        cursor.execute(sql, (title, author, publisher, publishing, rating, review, sales, price, rangking, rangking_weeks))
+        cursor.execute(sql, (title, author, publisher, publishing, rating, review, sales, price, ranking, ranking_weeks))
+        
+        connection.commit()
+
+        time.sleep(2)
+    
+    cursor.close()
