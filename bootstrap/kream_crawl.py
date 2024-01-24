@@ -29,8 +29,26 @@ service = Service(ChromeDriverManager().install())
 
 browser = webdriver.Chrome(service=service, options=options)
 
+# for 문으로 돌려서 각각
+# https://kream.co.kr/search // 전체 상품 주소
+# https://kream.co.kr/search?gender={men, women, kidz} //성별 별 주소
+# https://kream.co.kr/search?gender={men, women, kidz}&shop_category_id={각각 카테고리별 주소}
+# 아우터 전체 62 / 자켓 22, 아노락 72, 코트 21, 패딩 20, 기타 아우터 72
+# 신발 전체 34 / 스니커즈 1, 샌들/슬리퍼 37 , 플랫 70, 로퍼 69, 더비/레이스업 55, 부츠 35, 기타 신발 71
+# 상의 전체 64 / 
+# cssselector로 선택하는게 나을까... 아니면 각 카테고리별로 리스트를 만들어서 크롤링을 할까...... 흠....
+# 멘토링 질문이다 이건!!
+# 
+# 
+# 
+# 
+# 
 
 
+
+
+
+# browser.find_element(By.CSS_SELECTOR, 
 
 # 회원가입시 데이터베이스에 추가
 # customers
@@ -50,7 +68,7 @@ browser = webdriver.Chrome(service=service, options=options)
 # 아 근데 중복되네................................
 # 아니지, 전체상품 보여줄때만 중복제거 해서 보여주면 되잖아
 # male, female, kidz 로 나뉘고 all_products 보여줄때는 중복 제거해서 보여주면 되겠다
-# 그러면 pk 빼고 성별 / 카테고리 / 이너카테고리 별로 긁어와서 okeu dokey
+# 그러면 pk 빼고 성별 / 카테고리 / 이너 카테고리 별로 긁어와서 okeu dokey
 
 
 # for 성별
