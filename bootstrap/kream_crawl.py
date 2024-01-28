@@ -29,6 +29,7 @@ service = Service(ChromeDriverManager().install())
 
 browser = webdriver.Chrome(service=service, options=options)
 
+
 # for 문으로 돌려서 각각
 # https://kream.co.kr/search // 전체 상품 주소
 # https://kream.co.kr/search?gender={men, women, kidz} //성별 별 주소
@@ -43,7 +44,6 @@ browser = webdriver.Chrome(service=service, options=options)
 # 
 # 
 # 
-
 
 
 
@@ -79,13 +79,42 @@ browser = webdriver.Chrome(service=service, options=options)
 #           category_inner = 해당 하위 카테고리
 #           객체 하나씩 들어가서
 #           product_name, brand, model_number ,price_released ,price_last ,representative_color ,directly_buy ,directly_sell 추출
-#           하고나서 spl = insert into ...
-#           근데 이게 효율이 좋을까...
-# 
-# 
+#           하고나서 spl = insert into
 
 
 
+# gender = ["men", "women", "kidz"]
+# for i in gender:
+#     url = f"https://kream.co.kr/search?gender={i}"
+#     browser.get(url)
+#     time.sleep(2)
+#     html = browser.page_source
+#     soup = BeautifulSoup(html, "html.parser")
+
+# category_products = [outer, shuse '''''']
+# for i ---:
+
+
+# outer = [상품1, 상품2 ....]
+# for i in category:
+
+
+
+# shuse = []
+
+
+# insert into product_name, brand, model_number ,price_released ,price_last ,representative_color ,directly_buy ,directly_sell
+# value(asd,asd,asd,asd123,123)
+
+
+
+    # print(soup.prettify())
+    # print(soup.find_all("div", {"class": "main-title-container"}))
+    # print(soup.find_all("div", {"class": "left-container"}))
+    # print(soup.find_all("div", {"class": "detail-box"}))
+    # print(soup.find_all("div", {"class": "color-target"}))
+    # print(soup.find_all("div", {"class": "pricr"}))
+    # print(soup.find_all("div", {"class": "num"}))
 
 # products
 
