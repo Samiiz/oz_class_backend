@@ -8,14 +8,14 @@ from bs4 import BeautifulSoup
 import time
 import pymysql
 
-connection = pymysql.connect(
-    host='localhost',
-    user='root',
-    password='samiiz',
-    db='kream',
-    charset='utf8mb4',
-    cursorclass=pymysql.cursors.DictCursor
-)
+# connection = pymysql.connect(
+#     host='localhost',
+#     user='root',
+#     password='samiiz',
+#     db='kream',
+#     charset='utf8mb4',
+#     cursorclass=pymysql.cursors.DictCursor
+# )
 
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
@@ -29,7 +29,54 @@ service = Service(ChromeDriverManager().install())
 
 browser = webdriver.Chrome(service=service, options=options)
 
+url = "https://kream.co.kr/search?gender="
+gender_list = ["men", "women", "kids"]
+category_products_list = ["Outerwear", "Shoes", "Tops", "Bottoms", "Bags", "Fashion Accessories"]
+category_inner_list = ["Jacket", "Anorak", "Coat", "Padding", "Other Outerwear", "Sneakers", "Sandals/Slippers", "Flats", "Loafers", "Boots", "Short-sleeve T-shirt", "Long-sleeve T-shirt", "Cardigan", "Shirt", "Hoodie", "Hooded Zip-up", "Sweatshirt", "Sleeveless", "Dress", "Knit", "Other Tops", "Pants", "Shorts", "Skirt", "Leggings", "Other Bottoms", "Mini Bag", "Backpack", "Tote Bag", "Crossbody Bag", "Duffle Bag", "Other Bags", "Other Jewelry", "Beanie", "Bucket Hat", "Baseball Cap", "Other Hats", "Belt", "Eyewear", "Muffler", "Scarf", "Gloves", "Socks", "Other Fashion Accessories"]
 
+Outerwear = [22, 72, 21, 20, 73]
+Shoes = []
+Tops = []
+Bottoms = []
+Bags = []
+Fashion_Accessories = []
+
+page_number = [Outerwear, Shoes, Tops, Bottoms, Bags, Fashion_Accessories]
+
+for gender in gender_list:
+    category_gender = gender
+    for category in category_products_list:
+        category_products = category
+        for category_inners in category_inner_list:
+            category_inner = category_inners
+            link_list = []
+            for products in page_number:
+                link = products
+                for id in link:
+                    urls = f'https://kream.co.kr/search?gender={gender}&shop_category_id={id}'
+                    browser.get(urls)
+                    datas = browser.find_elements(By.CLASS_NAME, 'item_inner')
+                    page_list = [att_href.get_attribute('href') for att_href in datas]
+                    link_list.extend(page_list)
+                # with connection.cursor() as cursor:
+                for link in link_list:
+
+                    browser.get(link)
+                    product_name = browser.find_element(By.CSS_SELECTOR, 'p:nth-child(3) > .title').text
+                    print(f'{category_gender}, {category_products}, {category_inner}, {product_name}')
+                    # brand = .left-container > .title-text 안나오면 .subtitle
+                    # model_number = .detail-box[2] > .product_info
+                    # price_released = detail-price > .price_info[1]
+                    # price_last = .detail-box[1] > .product_info
+                    # representative_color = .color-target
+                    # directly_buy = btn_action [1] .pricr > .num
+                    # directly_sell = btn_action [2] .pricr > .num
+
+
+
+time.sleep(20)
+
+browser.quit()
 # for 문으로 돌려서 각각
 # https://kream.co.kr/search // 전체 상품 주소
 # https://kream.co.kr/search?gender={men, women, kidz} //성별 별 주소
