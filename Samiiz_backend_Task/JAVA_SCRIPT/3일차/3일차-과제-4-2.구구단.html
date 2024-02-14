@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>구구단</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1,
+      h3 {
+        text-align: center;
+      }
+      table {
+        margin: 20px;
+        width: 800px;
+        text-align: center;
+        align-items: center;
+      }
+      table,
+      th,
+      td {
+        text-align: center;
+        border: 1px solid dimgray;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 2px 10px;
+        font-weight: 900;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>구구단 표</h1>
+    <h3>2단~9단</h3>
+
+    <table>
+      <tr>
+        <th>2단</th>
+        <th>3단</th>
+        <th>4단</th>
+        <th>5단</th>
+        <th>6단</th>
+        <th>7단</th>
+        <th>8단</th>
+        <th>9단</th>
+      </tr>
+      <tr id="results">
+        <td id="two"></td>
+        <td id="three"></td>
+        <td id="four"></td>
+        <td id="five"></td>
+        <td id="six"></td>
+        <td id="seven"></td>
+        <td id="eight"></td>
+        <td id="nine"></td>
+      </tr>
+    </table>
+
+    <script>
+      const table = document.getElementById("results");
+
+      // 2단부터 9단까지 반복
+      for (let i = 2; i <= 9; i++) {
+        let result = "";
+
+        for (let j = 1; j <= 9; j++) {
+          result += `${i} * ${j} = ${j * i}<br>`;
+        }
+        const target = table.children[i - 2];
+
+        target.innerHTML = result;
+      }
+    </script>
+  </body>
+</html>

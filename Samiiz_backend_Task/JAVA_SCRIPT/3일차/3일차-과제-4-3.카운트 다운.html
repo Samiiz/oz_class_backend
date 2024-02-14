@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="now"></p>
+    <p id="d-day"></p>
+
+    <script>
+      let timer;
+      timer = setInterval(function () {
+        const p = document.getElementById("now");
+
+        const now = new Date();
+
+        const months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+        let year = now.getFullYear();
+        let month = now.getMonth();
+        let day = now.getDay();
+        let date = now.getDate();
+        let hour = now.getHours();
+        let min = now.getMinutes();
+        let sec = now.getSeconds();
+        const dayName = days[day];
+        const monthName = months[month];
+
+        p.textContent = `현재 날짜와 시간 : ${dayName} ${monthName} ${date} ${year} ${hour}:${min}:${sec} GMP+0900(한국 표준시)`;
+      }, 1000);
+
+      const targetDate = new Date(2024, 11, 31, 23, 59, 59); // 2024년 12월 31일 23:59:59
+
+      let d_timer;
+      d_timer = setInterval(function () {
+        const now = new Date();
+        const timeDifference = targetDate - now;
+
+        if (timeDifference > 0) {
+          const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+          const remainingTimeText = `올해의 남은시간 ${days}일 ${hours}시간 ${minutes}분 ${seconds}초 남았습니다.`;
+          document.getElementById("d-day").textContent = remainingTimeText;
+        }
+      }, 1000);
+
+      timer();
+      d_timer();
+    </script>
+  </body>
+</html>

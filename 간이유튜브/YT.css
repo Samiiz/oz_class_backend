@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff0000; /* YouTube red color */
+}
+
+.search-bar {
+    display: flex;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    width: 50vw;
+}
+
+button {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.video {
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.video:hover {
+    transform: scale(1.05);
+}
+
+iframe {
+    width: 100%;
+    height: 315px;
+    border: none;
+}
+
+h2 {
+    margin: 10px 0;
+}
+
+footer {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+p {
+    color: #777;
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        /* max-width: 768px 이하에서 아이콘으로 변경 */
+        background: url('https://w7.pngwing.com/pngs/441/880/png-transparent-youtube-logo-youtube-computer-icons-logo-android-joystick-angle-electronics-rectangle.png') center/contain no-repeat; 
+        text-indent: -9999px;
+        width: 50px; /* 적절한 크기로 조정 */
+        height: 50px; /* 적절한 크기로 조정 */
+    }
+
+    main {
+        grid-template-columns: repeat(1, 1fr); /* max-width: 768px 이하에서 한 행에 1개의 열로 변경 */
+    }
+}

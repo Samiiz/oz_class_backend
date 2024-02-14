@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>Admin Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="55"
+        height="55"
+        fill="currentColor"
+        class="bi bi-github"
+        viewBox="0 0 16 16"
+        onclick="myPage()"
+        style="cursor: pointer;"
+      >
+        <path
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+        />
+      </svg>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>신규 등록 상품</h3>
+        <h5>(2024-01-22)</h5>
+      </div>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <form
+            class="row row-cols-lg-auto g-3 align-items-center"
+            role="search"
+          >
+            <div class="col-12">
+              <label class="visually-hidden" for="inlineFormSelectPref"
+                >Preference</label
+              >
+              <select class="form-select" id="inlineFormSelectPref">
+                <option>카테고리</option>
+                <option>상의</option>
+                <option>하의</option>
+                <option>신발</option>
+                <option>패션잡화</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="제품명을 입력해주세요."
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-primary">조회</button>
+            </div>
+          </form>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary me-md-2" type="button">삭제</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container mt-3">
+      <table class="table table-sm">
+        <nav class="d-grid gap-2 d-md-flex justify-content-md-end" aria-label="...">
+          <ul class="pagination pagination-sm">
+            <li class="page-item active" aria-current="page">
+              <span class="page-link">남성</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">여성</a></li>
+            <li class="page-item"><a class="page-link" href="#">키즈</a></li>
+          </ul>
+        </nav>
+        <thead>
+          <th scope="col">카테고리</th>
+          <th scope="col">브랜드</th>
+          <th scope="col">상품명</th>
+          <th scope="col">가격</th>
+        </thead>
+        <tbody id="data-table">
+          <!-- 추후 크롤링한 데이터가 들어가는 자리 -->
+        </tbody>
+      </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end pagination-sm">
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <script>
+      // 크롤링한 데이터를 아래와 같은 형태의 객체 배열로 가정합니다.
+      // 추후 데이터베이스에 있는 데이터를 쿼리문으로 불러 올 수 있게 쿼리르 작성해 볼 수 있음
+      const data = [
+        {
+          category: "상의",
+          brand: "Supreme",
+          product: "슈프림 박스로고 후드티",
+          price: "390,000",
+        },
+        {
+          category: "하의",
+          brand: "DIESEL",
+          product: "디젤 트랙 팬츠",
+          price: "188,000",
+        },
+        {
+          category: "신발",
+          brand: "Nike",
+          product: "에어포스 1",
+          price: "137,000",
+        },
+        {
+          category: "패션잡화",
+          brand: "Music&Goods",
+          product: "빵빵이 키링",
+          price: "29,000",
+        },
+        // ...
+      ];
+
+      const dataTable = document.getElementById("data-table");
+
+      data.forEach((item) => {
+        const row = dataTable.insertRow();
+        row.insertCell(
+          0
+        ).innerHTML = `<input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> ${item.category}`;
+        row.insertCell(1).innerHTML = item.brand;
+        row.insertCell(2).innerHTML = item.product;
+        row.insertCell(3).innerHTML = item.price;
+      });
+
+      // 업데이트된 날짜를 표시할 요소 선택
+      const updatedDateElement = document.querySelector("h5");
+
+      // 현재 날짜를 가져오기 위한 함수
+      function getCurrentDate() {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+        const day = String(currentDate.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      // 업데이트된 날짜 표시
+      updatedDateElement.innerHTML = `<span style="color: red;">NEW</span> (${getCurrentDate()})`;
+      function myPage() {
+        // 지정한 GitHub 링크로 이동
+        window.open("https://github.com/Samiiz", "_blank");
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

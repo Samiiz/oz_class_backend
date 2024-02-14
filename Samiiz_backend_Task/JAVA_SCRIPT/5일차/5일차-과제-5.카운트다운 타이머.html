@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .countdown-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+      }
+
+      .countdown-item {
+        text-align: center;
+        font-size: 1.2em;
+      }
+
+      .countdown-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .countdown-item .countdown-value {
+        font-size: 2em;
+        font-weight: bold;
+      }
+    </style>
+    <title>Countdown Timer</title>
+  </head>
+  <body>
+    <p id="now"></p>
+    <p id="d-day"></p>
+    <input type="date" id="datePicker" />
+    <button onclick="setTargetDate()">D-day 설정!!</button>
+
+    <div class="countdown-container">
+      <div class="countdown-column">
+        <div id="days" class="countdown-item">
+          <div class="d_date countdown-value"></div>
+        </div>
+        <div class="countdown-label">Days</div>
+      </div>
+
+      <div class="countdown-column">
+        <div id="hours" class="countdown-item">
+          <div class="h_date countdown-value"></div>
+        </div>
+        <div class="countdown-label">Hours</div>
+      </div>
+
+      <div class="countdown-column">
+        <div id="minutes" class="countdown-item">
+          <div class="m_date countdown-value"></div>
+        </div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+
+      <div class="countdown-column">
+        <div id="seconds" class="countdown-item">
+          <div class="s_date countdown-value"></div>
+        </div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+
+    <script>
+      let timer;
+      let d_timer;
+      let targetDate = new Date();
+
+      function updateNow() {
+        const now = new Date();
+
+        const months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+        let year = now.getFullYear();
+        let month = now.getMonth();
+        let day = now.getDay();
+        let date = now.getDate();
+        let hour = now.getHours();
+        let min = now.getMinutes();
+        let sec = now.getSeconds();
+        const dayName = days[day];
+        const monthName = months[month];
+
+        document.getElementById(
+          "now"
+        ).textContent = `현재 날짜와 시간 : ${dayName} ${monthName} ${date} ${year} ${hour}:${min}:${sec} GMP+0900(한국 표준시)`;
+      }
+
+      function setTargetDate() {
+        const datePicker = document.getElementById("datePicker");
+        const selectedDate = new Date(datePicker.value + "T00:00:00");
+        targetDate = selectedDate;
+        clearInterval(d_timer);
+        d_timer = setInterval(updateRemainingTime, 1000);
+      }
+
+      function updateRemainingTime() {
+        const now = new Date();
+        const timeDifference = targetDate - now;
+
+        if (timeDifference > 0) {
+          const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+          // 각각의 요소에 표시
+          document.querySelector(".d_date").textContent = `${days}`;
+          document.querySelector(".h_date").textContent = `${hours}`;
+          document.querySelector(".m_date").textContent = `${minutes}`;
+          document.querySelector(".s_date").textContent = `${seconds}`;
+        }
+      }
+
+      timer = setInterval(updateNow, 1000);
+      d_timer = setInterval(updateRemainingTime, 1000);
+    </script>
+  </body>
+</html>

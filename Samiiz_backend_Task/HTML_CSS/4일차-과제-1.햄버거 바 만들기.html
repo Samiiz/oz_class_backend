@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>더덕마켓 햄버거바</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 16px;
+        }
+        .flex{
+            display: flex;
+        }
+    </style>
+    <link href="4일차-과제-1.햄버거 바 만들기.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content flex">
+                <div class="header-content__logo">더덕마켓</div>
+                <nav class="header-content__nav flex">
+                    <ul>
+                        <li class="hamberger"><input class="hamberger__bar" type="button" value="&#9776;"></li>
+                        <li>중고거래</li>
+                        <li>동네가게</li>
+                        <li class="active">알바</li>
+                        <li>부동산 직거래</li>
+                        <li>중고차 직거래</li>
+                    </ul>
+                </nav>
+                <div class="header-content__input flex">
+                    <span class="icon glass">
+                        <input type="button" value="&#128269;">
+                    </span>
+                    <span>
+                    <input type="text" class="search" placeholder="물품이나 동네를 검색해보세요">
+                    </span>
+                    <span class="icon menu">
+                    <input type="button" value="&#9776;">
+                    </span>
+                    <span>
+                    <input type="button" class="chat" vaLue="채팅하기">
+                    </span>
+                </div>
+            </div>
+        </header>
+    </div>
+</body>
+</html>

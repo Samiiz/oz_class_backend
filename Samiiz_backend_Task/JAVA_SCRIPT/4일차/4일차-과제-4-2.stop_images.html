@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이미지 멈춰!</title>
+    <style>
+      #imageContainer {
+        width: 90vw;
+        height: 80vh;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .image.active {
+        opacity: 1;
+      }
+
+      #stopButton {
+        margin-top: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="imageContainer">
+      <div
+        class="image active"
+        style="
+          background-image: url('https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEyMDFfNjUg%2FMDAxNzAxMzcxNTA1NzUw.MupxkvpXeupeyWsPDuF4u_l8ftnodi7tHAhJ0uyFBGsg.3SGQhWFCZBCfa1oeWRVZ9mekRS_Y_eeDmwvuBPJ7M6Mg.JPEG.bmk503%2FIMG_9093-2.jpg&type=a340');
+        "
+      ></div>
+      <div
+        class="image"
+        style="
+          background-image: url('https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1651486509109-356e79382c83%3Fcrop%3Dfaces%252Cedges%26cs%3Dtinysrgb%26fit%3Dcrop%26fm%3Djpg%26ixid%3DMnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjgwMzE2NTQy%26ixlib%3Drb-4.0.3%26q%3D60%26w%3D1200%26auto%3Dformat%26h%3D630%26mark-w%3D64%26mark-align%3Dtop%252Cleft%26mark-pad%3D50%26blend-mode%3Dnormal%26blend-alpha%3D10%26blend-w%3D1%26mark%3Dhttps%253A%252F%252Fimages.unsplash.com%252Fopengraph%252Flogo.png%26blend%3D000000&type=l340_165');
+        "
+      ></div>
+      <div
+        class="image"
+        style="
+          background-image: url('https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA5MDNfOTgg%2FMDAxNjkzNzE4MDIzNTYx.Niy17blXO3E5Y45O1QAE4ndZIocB_26vYMwHFBKfddYg.ARWJMlOYHw-iffl7bNIx0bJgfQW46NYffSDl5lD-ITIg.JPEG.beyounota%2F20171209_112230.jpg&type=a340');
+        "
+      ></div>
+      <div
+        class="image"
+        style="
+          background-image: url('https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAxMTdfMjA0%2FMDAxNjEwODY5MjkwNTI0.KMaZXy8Aps4g4Pue7CrGGyfkSJxfQ52GI8ShZHBhcy8g.rd85YhxJhnZ_PPGDFIKg0qyEzRf0sNAE3ZTW26S6uXIg.JPEG.0hoyaho0%2FIMG_4501.jpg&type=a340');
+        "
+      ></div>
+      <div
+        class="image"
+        style="
+          background-image: url('https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAxMjVfMzYg%2FMDAxNjExNTY2Nzg1NjUx.LDJ188SiKkJRD7jr4JjYrmdjLl2kMsNVk_ESURlwhxcg.HIC224IssZP0mFsqPphrEt1l9w9VDj6bzWCcmbRLvSUg.JPEG.miyampuzzy%2Ftap.jpg&type=a340');
+        "
+      ></div>
+    </div>
+    <button id="stopButton" onclick="toggleRotation()">멈추어라아아아!!</button>
+
+    <script>
+      let rotationInterval;
+
+      function startRotation() {
+        const images = document.querySelectorAll(".image");
+        let currentIndex = 0;
+
+        rotationInterval = setInterval(() => {
+          images[currentIndex].classList.remove("active");
+          currentIndex = (currentIndex + 1) % images.length;
+          images[currentIndex].classList.add("active");
+        }, 2000);
+      }
+
+      function stopRotation() {
+        clearInterval(rotationInterval);
+      }
+
+      function toggleRotation() {
+        if (rotationInterval) {
+          stopRotation();
+        } else {
+          startRotation();
+        }
+      }
+
+      startRotation();
+    </script>
+  </body>
+</html>

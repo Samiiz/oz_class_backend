@@ -1,0 +1,15 @@
+article{
+    width:  100vw;
+    height: 300px;
+    background-color: black;
+    overflow: hidden;
+}
+article .background{
+    width: 6000px;
+    height: 3000px;
+    background-image: url("images/ozcoding_logo.png");
+    transform: rotate(35deg);
+    display: flex;
+    position: relative;
+    left: -360px;
+}

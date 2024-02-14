@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가위 바위 보</title>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <form id="gameForm">
+        <h1>가위바위보 게임</h1>
+        <h3>가위, 바위, 보 중 하나를 입력하세요.</h3>
+        <select id="userChoice">
+          <option disabled selected>승부를 내보자!</option>
+          <option>가위</option>
+          <option>바위</option>
+          <option>보</option></select
+        ><input type="button" value="결과확인" onclick="playGame()"/ >
+        <p id="result"></p>
+      </form>
+    </div>
+
+    <script>
+      alert("가위바위보 게임!! 한 번에 10회까지 가능합니다!");
+      let round = 1;
+      let cumulativeResults = { victory: 0, defeat: 0, draw: 0 };
+
+      function playGame() {
+        if (round > 10) {
+          alert("게임은 최대 10회까지만 가능합니다.");
+          return;
+        }
+
+        const userChoiceElement = document.getElementById("userChoice");
+        const userChoice = userChoiceElement.value;
+
+        const AI = Math.floor(Math.random() * 3) + 1;
+        let AI_choice = "";
+
+        if (AI === 1) {
+          AI_choice = "가위";
+        } else if (AI === 2) {
+          AI_choice = "바위";
+        } else if (AI === 3) {
+          AI_choice = "보";
+        }
+
+        const resultElement = document.getElementById("result");
+        const resultText = document.createElement("p");
+
+        resultText.textContent = `@${round}회차@ 당신의 선택은 ${userChoice}! AI의 선택은 ${AI_choice}!! 결과는 `;
+
+        if (userChoice === AI_choice) {
+          resultText.textContent += "비겼습니다!";
+          cumulativeResults.draw++;
+        } else if (
+          (userChoice === "가위" && AI_choice === "보") ||
+          (userChoice === "바위" && AI_choice === "가위") ||
+          (userChoice === "보" && AI_choice === "바위")
+        ) {
+          resultText.textContent += "이겼습니다!";
+          cumulativeResults.victory++;
+        } else {
+          resultText.textContent += "졌습니다!";
+          cumulativeResults.defeat++;
+        }
+
+        resultElement.appendChild(resultText);
+
+        round++;
+
+        if (round > 10) {
+          resultElement.innerHTML += `<p>게임이 종료되었습니다.</p>`;
+          resultElement.innerHTML += `<p>누적 결과는 승리 ${cumulativeResults.victory}회, 패배 ${cumulativeResults.defeat}회, 무승부 ${cumulativeResults.draw}회 입니다!!</p>`;
+        }
+      }
+    </script>
+  </body>
+</html>
