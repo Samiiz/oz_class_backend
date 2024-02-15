@@ -1,8 +1,11 @@
 # 구현기능
 
-- 최신업데이트 2 / 16
-<br/>[Boards](#boards), [Users](#customusers)
+---
 
+- 최신업데이트 2 / 16
+<br/>[Boards](#boards) &nbsp; [Users](#customusers) &nbsp; [Common](#common)
+
+---
 ## Feeds
 
 1. /feeds 로 들어갈시 "show feed" 출력  
@@ -15,6 +18,8 @@
 아래 화면처럼 출력  
 <br/><img src=contents/:feeds:id:content.png>
 
+---
+
 ## Questions
 
 1. /questions 로 들어 갈시  
@@ -25,10 +30,14 @@
 아래 화면처럼 출력  
 <br/><img src=contents/:questions:id:num.gif>
 
+---
+
 ## Boards
 
 - boards 테이블을 생성  
 <br/><img src=contents/:Boards.png>
+
+---
 
 ## CustomUsers
 
@@ -39,11 +48,15 @@
 `'classes': ('collapse')` 를 사용하여 긴내용을 필요할때만 보도록 수정  
 <br/><img src=contents/:Users_detail.gif>
 
+---
+
 ## Common
 
 - Common app 생성으로 django 기본기능인 models의 Model과 함께  
 `created_at` `updated_at` 모델을 사용 할 수 있게 함  
 <br/><img src=contents/:Common.png>
+
+---
 
 # you need more
 
