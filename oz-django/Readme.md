@@ -1,5 +1,8 @@
 # 구현기능
 
+- 최신업데이트 2 / 16
+<br/>[Boards](#boards), [Users](#customusers)
+
 ## Feeds
 
 1. /feeds 로 들어갈시 "show feed" 출력  
@@ -35,6 +38,12 @@
 2. CustomUsers의 fieldset 내용중 Permissions의 내용을  
 `'classes': ('collapse')` 를 사용하여 긴내용을 필요할때만 보도록 수정  
 <br/><img src=contents/:Users_detail.gif>
+
+## Common
+
+- Common app 생성으로 django 기본기능인 models의 Model과 함께  
+`created_at` `updated_at` 모델을 사용 할 수 있게 함  
+<br/><img src=contents/:Common.png>
 
 # you need more
 
