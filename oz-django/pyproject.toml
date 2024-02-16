@@ -1,14 +1,13 @@
 [tool.poetry]
 name = "oz-django"
 version = "0.1.0"
-description = "oz-django project"
+description = ""
 authors = ["Samiiz <skboss159@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "^5.0.2"
-ipython = "^8.21.0"
 djangorestframework = "^3.14.0"
 
 

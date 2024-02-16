@@ -45,12 +45,11 @@ DJANGO_SYSTEM_APPS = [
 CUSTOM_USER_APPS = [
     'boards.apps.BoardsConfig',
     'users.apps.UsersConfig',
+    'feeds.apps.FeedsConfig',
     'rest_framework',
 ]
 
-INSTALLED_APPS = [
-    DJANGO_SYSTEM_APPS + CUSTOM_USER_APPS
-]
+INSTALLED_APPS = DJANGO_SYSTEM_APPS + CUSTOM_USER_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
