@@ -30,15 +30,26 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+# 기존 INSTALLED_APPS가 너무 길어지면서 관리와 확인이 쉽도록
+# DJANGO_SYSTEM_APPS와 CUSTOM_USER_APPS로 분리
+
+DJANGO_SYSTEM_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
+
+CUSTOM_USER_APPS = [
     'boards.apps.BoardsConfig',
     'users.apps.UsersConfig',
+    'rest_framework',
+]
+
+INSTALLED_APPS = [
+    DJANGO_SYSTEM_APPS + CUSTOM_USER_APPS
 ]
 
 MIDDLEWARE = [
