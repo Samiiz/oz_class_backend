@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.exceptions import NotFound, ParseError
 from .models import Review
 from .serializers import ReviewSerializer
 
@@ -13,5 +14,13 @@ class Reviews(APIView):
 
         return Response(serializer.data)
 
-class ReviewDetail():
-    pass
+class ReviewDetail(APIView):
+    def get(self, request, review_id):
+        try:
+            review = Review.objects.get(id=review_id)
+        except:
+            raise NotFound
+        
+        serializer = ReviewSerializer(review)
+
+        return Response(serializer.data)
