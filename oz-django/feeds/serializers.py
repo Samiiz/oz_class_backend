@@ -5,7 +5,7 @@ from reviews.serializers import ReviewSerializer
 
 class FeedSerializer(ModelSerializer):
 
-    user = FeedUserSerializer()
+    user = FeedUserSerializer(read_only=True)
     review_set = ReviewSerializer(many=True, read_only=True)
 
     class Meta:

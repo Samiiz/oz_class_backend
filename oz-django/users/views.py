@@ -30,6 +30,7 @@ class Users(APIView):
             raise ParseError(serializer.errors)
 
 class MyInfo(APIView):
+
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     def get(self, request):
@@ -50,3 +51,31 @@ class MyInfo(APIView):
             return Response(serializer.data)
         else:
             raise ParseError(serializer.errors)
+
+from django.contrib.auth import authenticate, login, logout
+from rest_framework import status
+
+class Login(APIView):
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        if not username or not password:
+            raise ParseError()
+        
+        user = authenticate(request, username=username, password=password)
+
+        if user:
+            login(request, user)
+
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+
+class Logout(APIView):
+    def post(self, request):
+        permission_classes = [IsAuthenticated]
+        
+        logout(request)
+
+        return Response(status=status.HTTP_200_OK)
