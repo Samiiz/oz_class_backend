@@ -3,6 +3,8 @@ from django.contrib.auth.password_validation import validate_password
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound, ParseError
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from .serializers import MyInfoUserSerializer
 
 
@@ -28,6 +30,8 @@ class Users(APIView):
             raise ParseError(serializer.errors)
 
 class MyInfo(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         user = request.user
 
